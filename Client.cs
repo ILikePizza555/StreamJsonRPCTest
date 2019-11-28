@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Threading;
@@ -15,8 +16,10 @@ namespace SJRTest
             rpc = new JsonRpc(stream);
         }
 
-        public async Task<string> RequestDataDromServerRPC(string key, CancellationToken ct = default(CancellationToken))
+        public async Task<string> RequestDataFromServerRPC(string key, CancellationToken ct = default(CancellationToken))
         {
+            Console.WriteLine("Entered RequestDataFromServerRPC");
+            
             var arguments = new List<string>();
             arguments.Add(key);
             return await this.rpc.InvokeWithCancellationAsync<string>(nameof(Server.RequestDataFromClientRPC), arguments, ct);
@@ -24,6 +27,8 @@ namespace SJRTest
 
         public async Task<Dictionary<string, string>> DictionaryDataCallback()
         {
+            Console.WriteLine("Entered DictionaryDataCallback");
+
             var d = new Dictionary<string, string>();
             d.Add("username", "Izzy");
             d.Add("password", "hunter2");
