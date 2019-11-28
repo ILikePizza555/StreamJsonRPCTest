@@ -1,15 +1,16 @@
 ﻿using System;
 using System.IO;
+using System.Threading.Tasks;
 using Nerdbank.Streams;
 
 namespace SJRTest
 {
     class Program
     {
-        static async void Main(string[] args)
+        static async Task Main(string[] args)
         {
             var (client, server) = SetUpClientAndServer();
-            var result = client.RequestDataFromServerRPC("username");
+            var result = await client.RequestDataFromServerRPC("username");
             Console.WriteLine($"Result: {result}");
         }
 
