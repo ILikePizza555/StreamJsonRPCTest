@@ -11,7 +11,7 @@ namespace SJRTest
     {
         JsonRpc rpc;
 
-        Server(Stream stream)
+        public Server(Stream stream)
         {
             rpc = new JsonRpc(stream);
         }

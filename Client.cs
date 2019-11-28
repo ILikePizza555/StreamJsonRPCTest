@@ -10,7 +10,7 @@ namespace SJRTest
     {
         private JsonRpc rpc;
 
-        Client(Stream stream)
+        public Client(Stream stream)
         {
             rpc = new JsonRpc(stream);
         }
