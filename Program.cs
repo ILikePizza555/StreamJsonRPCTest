@@ -9,7 +9,7 @@ namespace SJRTest
         static async void Main(string[] args)
         {
             var (client, server) = SetUpClientAndServer();
-            var result = client.RequestDataDromServerRPC("username");
+            var result = client.RequestDataFromServerRPC("username");
             Console.WriteLine($"Result: {result}");
         }
 
