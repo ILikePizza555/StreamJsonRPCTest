@@ -1,12 +1,24 @@
 ﻿using System;
+using System.IO;
+using Nerdbank.Streams;
 
 namespace SJRTest
 {
     class Program
     {
-        static void Main(string[] args)
+        static async void Main(string[] args)
         {
-            Console.WriteLine("Hello World");
+            var (client, server) = SetUpClientAndServer();
+            var result = client.RequestDataDromServerRPC("username");
+            Console.WriteLine($"Result: {result}");
+        }
+
+        static (Client, Server) SetUpClientAndServer()
+        {
+            (Stream, Stream) streams = FullDuplexStream.CreatePair();
+            var client = new Client(streams.Item1);
+            var server = new Server(streams.Item2);
+            return (client, server);
         }
     }
 }
