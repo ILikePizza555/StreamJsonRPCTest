@@ -13,7 +13,7 @@ namespace SJRTest
 
         public Client(Stream stream)
         {
-            rpc = new JsonRpc(stream);
+            rpc = JsonRpc.Attach(stream, this);
         }
 
         public async Task<string> RequestDataFromServerRPC(string key, CancellationToken ct = default(CancellationToken))
